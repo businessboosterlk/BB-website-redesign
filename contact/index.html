@@ -13,10 +13,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#060606">
 <link rel="icon" href="../assets/img/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="preload" href="../assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.min.css">
 <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('bb-theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#ffffff':'#060606')})()</script>
 </head>
 <body>
@@ -27,6 +26,7 @@
     <a href="../content/">Content</a>
     <a href="../marketing/">Marketing</a>
     <a href="../technology/">Technology</a>
+    <a href="../systems/">Systems</a>
     <a href="../work/">Work</a>
     <a href="../about/">About</a>
   </nav>
@@ -39,6 +39,7 @@
   <a href="../content/">Content</a>
   <a href="../marketing/">Marketing</a>
   <a href="../technology/">Technology</a>
+  <a href="../systems/">Systems</a>
   <a href="../work/">Work</a>
   <a href="../about/">About</a>
   <a href="../contact/" aria-current="page">Contact</a>
@@ -82,7 +83,7 @@
     <div class="split">
       <div class="split-card">
         <span class="label orange">Tell us a little</span>
-        <h3>Start the conversation.</h3>
+        <h2 class="h3">Start the conversation.</h2>
         <p class="muted">Fill this in and we'll open WhatsApp with your message ready to send. Nothing is stored on this website.</p>
         <p class="muted" style="margin-top:auto">Business Booster<br>Kalubowila, Colombo, Sri Lanka</p>
       </div>
@@ -102,6 +103,48 @@
     </div>
   </div>
 </section>
+<section class="section" aria-labelledby="tools-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="label orange">Free tools</span>
+        <h2 id="tools-h">Not ready to talk?<br>Start here.</h2>
+      </div>
+    </div>
+    <div class="tools">
+      <a class="tool" href="https://businessboosterlk.github.io/rank/" data-reveal>
+        <span class="label">Website · SEO · Social</span>
+        <h3>Rank yourself</h3>
+        <p class="muted">Run a free website speed scan and SEO scan, then take three short quizzes to see where you stand.</p>
+        <span class="more">Run the scan <span class="arrow">→</span></span>
+      </a>
+      <a class="tool" href="https://businessboosterlk.github.io/check-up/" data-reveal>
+        <span class="label">2 minutes</span>
+        <h3>The check-up</h3>
+        <p class="muted">Answer five questions about your business and get a plain-language view of what to fix first.</p>
+        <span class="more">Take the check-up <span class="arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-h" style="padding-top:0">
+  <div class="wrap faq-wrap">
+    <div>
+      <span class="label orange" style="display:block;margin-bottom:18px">Questions</span>
+      <h2 id="faq-h">Before<br>we start.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>How do we get started?</summary><p>Send us a WhatsApp message on +94 76 741 2531. We'll set up a short call, learn about your business and tell you honestly what we would fix first. There's no cost for that first conversation.</p></details>
+      <details><summary>Do I need to buy every service?</summary><p>No. Many clients start with one thing, like a new website or monthly content, and add more when it makes sense. We'll tell you when something isn't worth doing yet.</p></details>
+      <details><summary>How much does it cost?</summary><p>Every business needs something different, so we send a clear written quote after the first call. You'll know exactly what's included and what it costs before anything starts.</p></details>
+      <details><summary>Who actually does the work?</summary><p>Our own in-house team in Kalubowila: strategists, designers, video and photo crew, developers and ads specialists. We don't hand your work to freelancers you've never met.</p></details>
+      <details><summary>How will I know it's working?</summary><p>We set up tracking before campaigns go live and review the numbers with you every month: enquiries, sales, search rankings and what we'll do next.</p></details>
+      <details><summary>Do you work outside Colombo?</summary><p>Yes. We work with businesses across Sri Lanka and with clients abroad, including New Zealand.</p></details>
+    </div>
+  </div>
+</section>
+
 </main>
 <footer class="footer">
   <div class="wrap">
@@ -117,14 +160,14 @@
           <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm4 6h4v1.7c.6-1 1.9-2 3.9-2 4.1 0 4.1 2.8 4.1 6.2V21h-4v-5.5c0-1.4 0-3.1-2-3.1s-2 1.5-2 3V21h-4V9Z"/></svg></a>
         </div>
       </div>
-      <div><h4>What we do</h4><ul><li><a href="../content/">Content &amp; design</a></li><li><a href="../marketing/">Marketing &amp; search</a></li><li><a href="../technology/">Websites &amp; systems</a></li><li><a href="../work/">Our work</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/rank/">Rank yourself</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="https://wa.me/94767412531">WhatsApp</a></li><li><a href="tel:+94767412531">+94 76 741 2531</a></li><li><a href="mailto:businessboosterlk@gmail.com">Email us</a></li></ul></div>
+      <div><h2 class="fh">What we do</h2><ul><li><a href="../content/">Content &amp; design</a></li><li><a href="../marketing/">Marketing &amp; search</a></li><li><a href="../technology/">Websites &amp; apps</a></li><li><a href="../systems/">Business systems</a></li><li><a href="../work/">Our work</a></li></ul></div>
+      <div><h2 class="fh">Company</h2><ul><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/rank/">Rank yourself</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
+      <div><h2 class="fh">Contact</h2><ul><li><a href="https://wa.me/94767412531">WhatsApp</a></li><li><a href="tel:+94767412531">+94 76 741 2531</a></li><li><a href="mailto:businessboosterlk@gmail.com">Email us</a></li></ul></div>
     </div>
     <div class="logo-big" aria-hidden="true"></div>
     <div class="footer-base"><span>© <span data-year>2026</span> Business Booster. Kalubowila, Colombo.</span><span>Built in-house.</span></div>
   </div>
 </footer>
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/main.min.js" defer></script>
 </body>
 </html>

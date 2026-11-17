@@ -34,4 +34,15 @@ Static site, no build step. Serve the folder with any local server (for example 
 | Work | Case studies with results |
 | Hero video | Your own studio footage, if you want to replace the stock clips |
 
-Styles live in `assets/css/style.css` and scripts in `assets/js/main.js`.
+## Editing styles and scripts
+Edit `assets/css/style.css` and `assets/js/main.js`, then regenerate the minified files the pages load:
+
+```bash
+npx terser assets/js/main.js -c -m -o assets/js/main.min.js
+npx clean-css-cli -o assets/css/style.min.css assets/css/style.css
+```
+
+Fonts (Inter, Inter Tight) are self-hosted in `assets/fonts/`.
+
+## Lighthouse (local, gzip server, Nov 2026)
+Accessibility, Best Practices and SEO score 100 on every page, mobile and desktop. Performance is 92–100.

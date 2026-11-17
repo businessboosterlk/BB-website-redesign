@@ -259,7 +259,7 @@
   var scope = document.querySelectorAll('main, .footer');
   var headSel = 'h1, h2, .stack-info h3, .svc-step h3, .pillar h3, .tool h3, .split-card h3, .step h3, .team-intro h3';
   var textSel = 'p, .label, .btn, .pill-row, .stack-tags, .stack-meta, .stack-head, .checks li, .svc-step ul, .svc-step .idx, .svc-step .more, .hero-actions, .film-tags, .faq details, .sector, .cta-contacts, .footer li, .socials, .wordmark, .marquee';
-  var skip = function (el) { return el.closest('.ill, [data-reveal], .statement, .mobile-menu, .nav, .reel, .cta-row .btn, .wa-float') && !el.matches('[data-reveal]'); };
+  var skip = function (el) { return el.closest('.ill, [data-reveal], .statement, .mobile-menu, .nav, .reel, .cta-row .btn, .wa-float, .hero') && !el.matches('[data-reveal]'); };
 
   var targets = [];
   scope.forEach(function (root) {
@@ -338,4 +338,13 @@
   if (!nav || !hero) return;
   function check() { nav.classList.toggle('on-hero', hero.getBoundingClientRect().bottom > nav.offsetHeight + 20); }
   addEventListener('scroll', check, { passive: true }); addEventListener('resize', check); check();
+})();
+
+/* ---------- v8: run graphic animations only while they are on screen ---------- */
+(function () {
+  var ills = document.querySelectorAll('.ill');
+  if (!('IntersectionObserver' in window)) { ills.forEach(function (i) { i.classList.add('run'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('run', e.isIntersecting); }); }, { rootMargin: '100px' });
+  function watch() { document.querySelectorAll('.ill').forEach(function (i) { io.observe(i); }); }
+  if (document.readyState === 'complete') watch(); else addEventListener('load', watch);
 })();

@@ -13,10 +13,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#060606">
 <link rel="icon" href="../assets/img/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="preload" href="../assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/style.min.css">
 <script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('bb-theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#ffffff':'#060606')})()</script>
 </head>
 <body>
@@ -27,6 +26,7 @@
     <a href="../content/">Content</a>
     <a href="../marketing/">Marketing</a>
     <a href="../technology/">Technology</a>
+    <a href="../systems/">Systems</a>
     <a href="../work/" aria-current="page">Work</a>
     <a href="../about/">About</a>
   </nav>
@@ -39,6 +39,7 @@
   <a href="../content/">Content</a>
   <a href="../marketing/">Marketing</a>
   <a href="../technology/">Technology</a>
+  <a href="../systems/">Systems</a>
   <a href="../work/">Work</a>
   <a href="../about/">About</a>
   <a href="../contact/">Contact</a>
@@ -55,38 +56,74 @@
 </section>
 <section class="section" style="padding-top:0">
   <div class="wrap">
-    <div class="section-head"><h2 style="font-size:clamp(34px,4.6vw,60px)">Websites</h2><span class="label">6 projects</span></div>
-    <div class="work-grid">
-      <a class="work-card wide" href="https://businessboosterlk.github.io/clove-beach/" data-reveal>
-        <img src="../assets/img/work/clove-beach.webp" alt="Clove Beach website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Clove Beach</strong><small>Hospitality<br>Website + content</small></div>
-        <div class="work-foot"><span>Boutique beachfront villas in Wadduwa</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
-      <a class="work-card" href="https://businessboosterlk.github.io/rugbycode/" data-reveal>
-        <img src="../assets/img/work/rugbycode.webp" alt="Rugby Code website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Rugby Code</strong><small>Sport<br>Website</small></div>
-        <div class="work-foot"><span>Player and coach development, New Zealand</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
-      <a class="work-card" href="https://businessboosterlk.github.io/sapphire-trails/" data-reveal>
-        <img src="../assets/img/work/sapphire-trails.webp" alt="Sapphire Trails website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Sapphire Trails</strong><small>Travel<br>Website</small></div>
-        <div class="work-foot"><span>Ceylon gem tours and custom jewellery</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
-      <a class="work-card" href="https://businessboosterlk.github.io/scribblings-of-a-medic/" data-reveal>
-        <img src="../assets/img/work/scribblings-of-a-medic.webp" alt="Scribblings of a Medic website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Scribblings of a Medic</strong><small>Healthcare<br>Website</small></div>
-        <div class="work-foot"><span>A doctor's writing and personal brand</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
-      <a class="work-card" href="https://businessboosterlk.github.io/sastho/" data-reveal>
-        <img src="../assets/img/work/sastho.webp" alt="Sastho website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Sastho</strong><small>Retail<br>Website</small></div>
-        <div class="work-foot"><span>Quality products at everyday prices</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
-      <a class="work-card wide" href="https://businessboosterlk.github.io/waterman/" data-reveal>
-        <img src="../assets/img/work/waterman.webp" alt="Waterman website" loading="lazy" width="1200" height="750">
-        <div class="work-meta"><strong>Waterman</strong><small>Industry<br>Website</small></div>
-        <div class="work-foot"><span>Water and wastewater treatment systems</span><span>View <span class="arrow">↗</span></span></div>
-      </a>
+    <div class="section-head center"><span class="label orange">Websites</span><h2>Six sites, six industries.</h2></div>
+    <div class="stack">
+      <article class="stack-card spot" style="--i:0">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">01</span>Hospitality</span>
+          <h3>Clove Beach</h3>
+          <p>Boutique beachfront villas in Wadduwa, with a calm, photo-led site that sends guests straight to WhatsApp to book.</p>
+          <div class="stack-meta"><small>Built for</small><span>Guests looking for a private stay</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/clove-beach/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/clove-beach/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/clove-beach</span></span><img src="../assets/img/work/clove-beach.webp" alt="Clove Beach website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
+      <article class="stack-card spot" style="--i:1">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">02</span>Sport</span>
+          <h3>Rugby Code</h3>
+          <p>Player and coach development from New Zealand, with a bold site built around programmes and sign-ups.</p>
+          <div class="stack-meta"><small>Built for</small><span>Players and coaches signing up</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/rugbycode/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/rugbycode/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/rugbycode</span></span><img src="../assets/img/work/rugbycode.webp" alt="Rugby Code website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
+      <article class="stack-card spot" style="--i:2">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">03</span>Travel</span>
+          <h3>Sapphire Trails</h3>
+          <p>Ceylon gem tours and custom jewellery, presented as a premium travel experience.</p>
+          <div class="stack-meta"><small>Built for</small><span>Travellers planning gem tours</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/sapphire-trails/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/sapphire-trails/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/sapphire-trails</span></span><img src="../assets/img/work/sapphire-trails.webp" alt="Sapphire Trails website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
+      <article class="stack-card spot" style="--i:3">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">04</span>Healthcare</span>
+          <h3>Scribblings of a Medic</h3>
+          <p>A doctor's writing and personal brand, made easy to read and easy to share.</p>
+          <div class="stack-meta"><small>Built for</small><span>Readers and patients</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/scribblings-of-a-medic/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/scribblings-of-a-medic/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/scribblings-of-a-medic</span></span><img src="../assets/img/work/scribblings-of-a-medic.webp" alt="Scribblings of a Medic website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
+      <article class="stack-card spot" style="--i:4">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">05</span>Retail</span>
+          <h3>Sastho</h3>
+          <p>Everyday products at everyday prices, with a clean store built for browsing on a phone.</p>
+          <div class="stack-meta"><small>Built for</small><span>Shoppers browsing on a phone</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/sastho/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/sastho/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/sastho</span></span><img src="../assets/img/work/sastho.webp" alt="Sastho website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
+      <article class="stack-card spot" style="--i:5">
+        <div class="stack-info">
+          <span class="stack-head"><span class="stack-num">06</span>Industry</span>
+          <h3>Waterman</h3>
+          <p>Water and wastewater treatment systems, presented as one clear source for engineered clean water.</p>
+          <div class="stack-meta"><small>Built for</small><span>Industrial and commercial buyers</span></div>
+          <div class="stack-meta"><small>What we did</small><div class="stack-tags"><span>Design</span><span>Development</span></div></div>
+          <a class="btn btn-ghost" href="https://businessboosterlk.github.io/waterman/">Visit the site <span class="arrow">↗</span></a>
+        </div>
+        <a class="stack-shot" href="https://businessboosterlk.github.io/waterman/"><span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>businessboosterlk.github.io/waterman</span></span><img src="../assets/img/work/waterman.webp" alt="Waterman website, home page" loading="lazy" width="1200" height="750"></span></a>
+      </article>
     </div>
   </div>
 </section>
@@ -95,17 +132,17 @@
     <div class="section-head"><h2 style="font-size:clamp(34px,4.6vw,60px)">Systems &amp; apps</h2><span class="label">Built by our developers</span></div>
     <div class="work-grid">
       <a class="work-card wide" href="https://businessboosterlk.github.io/systems/sales-os/" data-reveal>
-        <img src="../assets/img/work/sales-os.jpg" alt="Sales OS website" loading="lazy" width="1200" height="750">
+        <img src="../assets/img/work/sales-os.webp" alt="Sales OS website" loading="lazy" width="1200" height="750">
         <div class="work-meta"><strong>Sales OS</strong><small>Live demo<br>Sales &amp; follow-up</small></div>
         <div class="work-foot"><span>Leads, pipeline and next steps in one place</span><span>View <span class="arrow">↗</span></span></div>
       </a>
       <a class="work-card" href="https://businessboosterlk.github.io/systems/gym-os/" data-reveal>
-        <img src="../assets/img/work/gym-os.jpg" alt="Gym OS website" loading="lazy" width="1200" height="750">
+        <img src="../assets/img/work/gym-os.webp" alt="Gym OS website" loading="lazy" width="1200" height="750">
         <div class="work-meta"><strong>Gym OS</strong><small>Live demo<br>Memberships</small></div>
         <div class="work-foot"><span>Check-ins, renewals and members</span><span>View <span class="arrow">↗</span></span></div>
       </a>
       <a class="work-card" href="https://businessboosterlk.github.io/systems/the-hub/" data-reveal>
-        <img src="../assets/img/work/the-hub.jpg" alt="The Hub website" loading="lazy" width="1200" height="750">
+        <img src="../assets/img/work/the-hub.webp" alt="The Hub website" loading="lazy" width="1200" height="750">
         <div class="work-meta"><strong>The Hub</strong><small>Live demo<br>Team workspace</small></div>
         <div class="work-foot"><span>Daily work for small teams</span><span>View <span class="arrow">↗</span></span></div>
       </a>
@@ -122,6 +159,32 @@
         <a class="btn btn-ghost" style="align-self:flex-start" href="https://wa.me/94767412531?text=Hi%20Business%20Booster%2C%20I%27d%20like%20to%20hear%20about%20a%20case%20study%20similar%20to%20my%20business.">Ask about a case study <span class="arrow">→</span></a>
       </div>
       <div class="ph-art" style="border-radius:var(--radius);min-height:320px"><span class="tag ph">Case study visual placeholder</span><svg viewBox="0 0 9 9" aria-hidden="true"><rect x="1" y="2" width="5" height="1"/><rect x="1" y="3" width="1" height="3"/><rect x="5" y="3" width="1" height="3"/><rect x="1" y="6" width="5" height="1"/><rect x="6" y="3" width="1" height="1" class="o"/><rect x="6" y="4" width="2" height="1" class="o"/><rect x="6" y="5" width="1" height="1" class="o"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="q-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="label orange">Clients</span>
+        <h2 id="q-h">In their words.</h2>
+      </div>
+      <span class="tag ph">Sample quotes: replace with real client testimonials</span>
+    </div>
+    <div class="quotes">
+      <div class="quote lead-card" data-reveal>
+        <b class="big">20+</b>
+        <p style="font-size:18px;color:#efe7dd">Businesses trust us with their content, websites, search, ads and systems every month.</p>
+      </div>
+      <figure class="quote" data-reveal style="margin:0">
+        <blockquote>“They didn't just post for us. They fixed the website, set up the ads and showed us exactly where our enquiries were coming from.”</blockquote>
+        <footer><span class="avatar" aria-hidden="true"></span><span><b>Client name</b>Business, sector</span></footer>
+      </figure>
+      <figure class="quote" data-reveal style="margin:0">
+        <blockquote>“One team, one WhatsApp group, one monthly review. We finally stopped chasing five different suppliers.”</blockquote>
+        <footer><span class="avatar" aria-hidden="true"></span><span><b>Client name</b>Business, sector</span></footer>
+      </figure>
     </div>
   </div>
 </section>
@@ -153,14 +216,14 @@
           <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm4 6h4v1.7c.6-1 1.9-2 3.9-2 4.1 0 4.1 2.8 4.1 6.2V21h-4v-5.5c0-1.4 0-3.1-2-3.1s-2 1.5-2 3V21h-4V9Z"/></svg></a>
         </div>
       </div>
-      <div><h4>What we do</h4><ul><li><a href="../content/">Content &amp; design</a></li><li><a href="../marketing/">Marketing &amp; search</a></li><li><a href="../technology/">Websites &amp; systems</a></li><li><a href="../work/">Our work</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/rank/">Rank yourself</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
-      <div><h4>Contact</h4><ul><li><a href="https://wa.me/94767412531">WhatsApp</a></li><li><a href="tel:+94767412531">+94 76 741 2531</a></li><li><a href="mailto:businessboosterlk@gmail.com">Email us</a></li></ul></div>
+      <div><h2 class="fh">What we do</h2><ul><li><a href="../content/">Content &amp; design</a></li><li><a href="../marketing/">Marketing &amp; search</a></li><li><a href="../technology/">Websites &amp; apps</a></li><li><a href="../systems/">Business systems</a></li><li><a href="../work/">Our work</a></li></ul></div>
+      <div><h2 class="fh">Company</h2><ul><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/rank/">Rank yourself</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
+      <div><h2 class="fh">Contact</h2><ul><li><a href="https://wa.me/94767412531">WhatsApp</a></li><li><a href="tel:+94767412531">+94 76 741 2531</a></li><li><a href="mailto:businessboosterlk@gmail.com">Email us</a></li></ul></div>
     </div>
     <div class="logo-big" aria-hidden="true"></div>
     <div class="footer-base"><span>© <span data-year>2026</span> Business Booster. Kalubowila, Colombo.</span><span>Built in-house.</span></div>
   </div>
 </footer>
-<script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/main.min.js" defer></script>
 </body>
 </html>
