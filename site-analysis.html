@@ -1,0 +1,247 @@
+<title>Business Booster Site Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~720px) with a wide scorecard grid; severity chips encode priority */
+:root{
+  --bg:#f6f5f1; --surface:#ffffff; --ink:#18181b; --muted:#5d5d66; --line:#e2e0d8;
+  --accent:#d9481a; --accent-soft:#fbe7df;
+  --crit:#b42318; --crit-bg:#fdecea; --warn:#9a6700; --warn-bg:#fff4d6; --good:#1a7f37; --good-bg:#e6f4ea;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111113; --surface:#1b1b1e; --ink:#f2f1ec; --muted:#a6a5ad; --line:#2d2d32;
+  --accent:#ff7043; --accent-soft:#3a1f16;
+  --crit:#ff8a80; --crit-bg:#3b1715; --warn:#f2c14e; --warn-bg:#332a10; --good:#6fdc8c; --good-bg:#14301d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111113; --surface:#1b1b1e; --ink:#f2f1ec; --muted:#a6a5ad; --line:#2d2d32;
+  --accent:#ff7043; --accent-soft:#3a1f16;
+  --crit:#ff8a80; --crit-bg:#3b1715; --warn:#f2c14e; --warn-bg:#332a10; --good:#6fdc8c; --good-bg:#14301d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:880px;margin-inline:auto}
+header.top{padding-block:56px 32px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(34px,6vw,54px);font-weight:700}
+h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;margin-bottom:16px}
+h3{font-size:19px;font-weight:600;margin-bottom:6px}
+.lede{font-size:18px;color:var(--muted);max-width:65ch;margin:16px 0 0}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-family:var(--mono);font-size:13px;color:var(--muted)}
+section{padding-block:44px;border-bottom:1px solid var(--line)}
+p{max-width:68ch;margin:0 0 12px}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.verdict{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;margin-top:28px}
+.verdict p:last-child{margin:0}
+.score{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:20px}
+.score div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.score b{display:block;font-family:var(--display);font-size:15px}
+.score span{font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+.c-crit{background:var(--crit-bg);color:var(--crit)} .c-warn{background:var(--warn-bg);color:var(--warn)} .c-good{background:var(--good-bg);color:var(--good)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0 8px}
+.stat{border-left:3px solid var(--accent);padding:4px 0 4px 12px}
+.stat .n{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat .l{font-size:13px;color:var(--muted)}
+.find{display:grid;gap:14px;margin-top:16px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.item p{margin:0;color:var(--muted);font-size:15px}
+.item p+p{margin-top:8px}
+.item .fix{color:var(--ink)}
+.item .fix::before{content:"Redesign: ";font-weight:600}
+ul.plain{padding-left:20px;margin:8px 0 0} ul.plain li{margin-bottom:6px;max-width:66ch}
+.tbl{overflow-x:auto;margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.num{font-variant-numeric:tabular-nums;font-family:var(--mono);font-size:13px}
+tr:last-child td{border-bottom:0}
+code{font-family:var(--mono);font-size:.88em;background:var(--accent-soft);padding:1px 5px;border-radius:5px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.flow span{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px}
+.flow span.big{border-color:var(--crit);color:var(--crit)}
+ol.road{counter-reset:r;list-style:none;padding:0;margin:16px 0 0;display:grid;gap:12px}
+ol.road li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 58px;position:relative}
+ol.road li::before{counter-increment:r;content:counter(r);position:absolute;left:18px;top:14px;font-family:var(--display);font-weight:700;font-size:22px;color:var(--accent)}
+ol.road li p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.note{font-size:13px;color:var(--muted);margin-top:24px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">Redesign audit · businessboosterlk.github.io</p>
+  <h1>Business Booster website audit</h1>
+  <p class="lede">A full read of the current site before the rebuild: what it says, how it is built, how it performs for search and AI answers, and what the new version should keep, cut and add.</p>
+  <div class="meta"><span>Audited 17 Nov 2026</span><span>29 pages crawled</span><span>Desktop 1280px + mobile 375px</span></div>
+</header>
+
+<section>
+  <h2>The short version</h2>
+  <p>The technical foundation is better than most agency sites in Sri Lanka: clean metadata on every page, a sitemap, <code>llms.txt</code> for AI search, dark mode, lazy-loaded WebP images and a no-JavaScript fallback. The problems are in the homepage itself. It is 26 phone screens long, it talks in abstract terms ("commercial progress", "Growth OS", "digital staff") instead of showing results, and it carries almost no proof that the work pays off. The code has also grown in layers: the homepage ships 236 KB of CSS, about a third of which repeats earlier versions of the same styles.</p>
+  <div class="verdict">
+    <p><strong>Recommendation:</strong> keep the subpage structure, the SEO/AEO groundwork and the WhatsApp-first contact model. Rebuild the homepage from scratch around proof (results, client names, testimonials, real work) at roughly a third of its current length, and rebuild the stylesheet as one shared file instead of patching the existing one.</p>
+  </div>
+  <div class="score">
+    <div><span class="chip c-crit">Weak</span><b>Messaging &amp; proof</b><span>Abstract copy, no results or testimonials</span></div>
+    <div><span class="chip c-crit">Weak</span><b>Homepage length</b><span>18,222px desktop, 21,058px mobile</span></div>
+    <div><span class="chip c-warn">Mixed</span><b>Code quality</b><span>Accessible markup, bloated CSS</span></div>
+    <div><span class="chip c-warn">Mixed</span><b>Portfolio</b><span>Real builds, hosted on the agency domain</span></div>
+    <div><span class="chip c-warn">Mixed</span><b>Measurement</b><span>No analytics or pixel at all</span></div>
+    <div><span class="chip c-good">Strong</span><b>SEO / AEO / GEO setup</b><span>Metadata, schema, sitemap, llms.txt</span></div>
+    <div><span class="chip c-good">Strong</span><b>Contact model</b><span>Context-specific WhatsApp messages</span></div>
+    <div><span class="chip c-good">Strong</span><b>Page weight</b><span>63 KB transfer, 1 extra request</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>What is on the site</h2>
+  <p>The site is a static build on GitHub Pages with no custom domain. The homepage links to 13 main pages; the sitemap adds nine more (eight system detail pages and a hotel marketing page that is only linked from Contact). Six client websites are hosted as folders on the same domain.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Group</th><th>Pages</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Home</td><td>/</td><td>Quiz, story, sectors, services, Growth OS, portfolio, systems, follow-up</td></tr>
+      <tr><td>Services</td><td>/production/ · /websites/ · /seo/ · /aeo/ · /geo/ · /ads/</td><td>670–850 words each. No images on any of them except Websites.</td></tr>
+      <tr><td>Systems</td><td>/systems/ + 9 product pages</td><td>Each honestly labelled live demo, demo on request or in build</td></tr>
+      <tr><td>Tools</td><td>/rank/ · /check-up/</td><td>Speed/SEO scan, quizzes, five-question check-up</td></tr>
+      <tr><td>Company</td><td>/about/ · /contact/ · /privacy/</td><td>About names founders by first name only</td></tr>
+      <tr><td>Orphan</td><td>/hotel-marketing/</td><td>In sitemap, linked only from Contact</td></tr>
+      <tr><td>Portfolio</td><td>6 client sites under /clove-beach/ etc.</td><td>Not in sitemap; indexing settings inconsistent (see below)</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>Homepage structure</h2>
+  <p>Thirteen sections stacked in one scroll. The "About" block alone runs 7,624px on desktop and 8,743px on a phone, because the founder story, three principles, the sector list, the five capability columns and a mid-page CTA all sit inside it.</p>
+  <div class="flow">
+    <span>Hero: social media question</span><span>The honest read (quiz)</span><span class="big">About block · 8,743px mobile</span><span>Growth OS wheel</span><span>Recurring offer</span><span>Website showcase</span><span>Portfolio grid</span><span>Systems / Sales OS</span><span>Sales follow-up</span><span>Final CTA</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="n">26</div><div class="l">phone screens to reach the footer</div></div>
+    <div class="stat"><div class="n">~1,400</div><div class="l">visible words on the homepage</div></div>
+    <div class="stat"><div class="n">12</div><div class="l">different WhatsApp CTAs</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">testimonials, results or logos on the homepage</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Messaging and content</h2>
+  <div class="find">
+    <div class="item"><span class="chip c-crit">Critical</span><h3>The hero sells one service; the agency sells six</h3>
+      <p>The H1 is "Is your social media growing your business?", and the About heading repeats it ("Is your social media a revenue stream for your business?"). The nav, meanwhile, lists social media, websites, search, ads and systems. A visitor who came for a website or a sales system has no reason to stay past the first screen.</p>
+      <p class="fix">lead with the outcome the whole agency delivers for Sri Lankan businesses, then route people by need (more enquiries, a new website, found on Google and AI, a system to run the business).</p></div>
+    <div class="item"><span class="chip c-crit">Critical</span><h3>No proof that the work pays off</h3>
+      <p>The only evidence on the homepage is "20+ active clients" (repeated four times), the founders' first names and a list of sectors. There are no client names next to results, no numbers, no testimonials, no case studies and no logos. Testimonials do appear, but only inside the hosted client sites. For an agency, this is the biggest conversion gap.</p>
+      <p class="fix">a results strip near the top (real metrics with client names), 3–4 short case studies (problem, what was done, what changed), a logo row and quoted testimonials with names and businesses.</p></div>
+    <div class="item"><span class="chip c-crit">Critical</span><h3>Copy is abstract and repetitive</h3>
+      <p>Most headings describe a philosophy rather than a service: "The difference is in the decisions", "Keep judgement near delivery", "Put the business in the middle", "Your digital staff should remember what people cannot". Phrases like "commercial progress" and "attention becomes action" recur throughout. A busy owner cannot tell from the homepage what they would get, how long it takes or roughly what it costs.</p>
+      <p class="fix">plain-language service descriptions with concrete deliverables ("12 reels and 20 posts a month", "5-page website in 3 weeks"), and starting prices or packages. llms.txt states "No prices are published on this site"; consider at least "from LKR X" ranges.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>A social media agency with no social links</h3>
+      <p>The site links to no Instagram, Facebook, TikTok, LinkedIn or YouTube account of its own, and the JSON-LD schema has no <code>sameAs</code>. Homepage has no video, reel or photo work even though production is the lead service; old <code>#video</code>, <code>#posts</code> and <code>#photography</code> anchors now redirect to the website showcase.</p>
+      <p class="fix">a "Recent work" reel/post grid (embedded as images linking out), social icons in header/footer, and <code>sameAs</code> in schema.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Developer notes are visible to visitors</h3>
+      <p>The footer says "All company, video, post, photography, website, system and app content remains visible. The guided check and theme switching need JavaScript. WhatsApp links still work." The quiz also tells users "With JavaScript off, either answer opens a relevant WhatsApp conversation." This is build documentation, not customer copy.</p>
+      <p class="fix">remove these lines.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Team is invisible</h3>
+      <p>Founders appear as "Thulaib" and "Shiara" with no photos, surnames, roles or backgrounds. "One in-house team" is a key claim but no team is shown.</p>
+      <p class="fix">team photos with names and roles; founder story with faces.</p></div>
+    <div class="item"><span class="chip c-good">Keep</span><h3>Honest tone and status labels</h3>
+      <p>Systems are labelled live, demo or in build; the quiz promises "No made-up score". This candour is a real differentiator worth keeping, just with more concrete content around it.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Design and user experience</h2>
+  <div class="find">
+    <div class="item"><span class="chip c-crit">Critical</span><h3>The hero is hidden until a script animates it</h3>
+      <p>Hero text, the nav and several blocks start at <code>opacity:0</code> and wait for JavaScript. On the first mobile load the screen was entirely black apart from the small eyebrow line. Slow phones on mobile data will see an empty page for longer, and Google may measure a late Largest Contentful Paint.</p>
+      <p class="fix">render the hero fully visible in HTML/CSS; animate from a visible state only.</p></div>
+    <div class="item"><span class="chip c-crit">Critical</span><h3>Two giant black screens before any substance</h3>
+      <p>The hero and the quiz section are both full-height black panels with oversized type (the H1 is ~55px on a phone and doesn't fit the first desktop viewport at 1280×860). Visitors scroll two screens before learning what the agency does.</p>
+      <p class="fix">a compact hero: one clear line, one supporting line, primary CTA, and proof visible in the first screen.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Quiz placed before trust is built</h3>
+      <p>The "honest read" quiz is the second section. Asking people to answer questions before they know who you are is a big ask. It also duplicates /check-up/ and /rank/.</p>
+      <p class="fix">move the quiz to its own page (merge with check-up) and link to it from a mid-page block.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Too many competing CTAs</h3>
+      <p>Twelve WhatsApp CTAs with different wording ("Get my honest read", "Ask what to fix first", "Tell us your sector", "Show us the bottleneck", "Add this to my Growth OS"…). Each one is well meant, but together they dilute the main action. There's no form for people who prefer not to use WhatsApp.</p>
+      <p class="fix">one primary CTA used consistently, one secondary (e.g. book a call), plus a short form on Contact. Keep the context-specific pre-filled messages; they're useful for tracking where leads came from.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Accessibility details</h3>
+      <p>The faint text colour (<code>#8c8c92</code> on <code>#f5f5f2</code>) is about 3.1:1 contrast, below the 4.5:1 needed for small text, and it's used for 11px eyebrows. 64 text elements render below 12px. Several nav and footer links are under 44px tap height on mobile.</p>
+      <p class="fix">minimum 13–14px for labels, 4.5:1 contrast, 44px tap targets.</p></div>
+    <div class="item"><span class="chip c-good">Keep</span><h3>What works</h3>
+      <ul class="plain">
+        <li>Light/dark theme with a toggle and system default</li>
+        <li>Skip link, semantic sections, alt text on every image</li>
+        <li>Reduced-motion styles throughout</li>
+        <li>No horizontal scrolling at phone width</li>
+        <li>Laptop mock-up showcase of a real site is a good idea; it just loads blank until the image arrives</li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Code and performance</h2>
+  <div class="stats">
+    <div class="stat"><div class="n">296 KB</div><div class="l">homepage HTML (uncompressed)</div></div>
+    <div class="stat"><div class="n">236 KB</div><div class="l">of that is inline CSS</div></div>
+    <div class="stat"><div class="n">766</div><div class="l">duplicated CSS selectors</div></div>
+    <div class="stat"><div class="n">45</div><div class="l">animation keyframes</div></div>
+  </div>
+  <div class="find">
+    <div class="item"><span class="chip c-warn">Important</span><h3>Stylesheet built in layers</h3>
+      <p>Five <code>&lt;style&gt;</code> blocks (one is 181 KB) hold 2,337 rules, 766 of which redefine a selector already defined earlier, plus 74 <code>!important</code> overrides. Class names like <code>hero-v4</code> and <code>revenue-hero</code> show each redesign was added on top of the previous one. Only ~32 KB of the homepage is actual content markup. The CSS is inlined per page, so browsers can't cache it between pages.</p>
+      <p class="fix">one shared, cached stylesheet with design tokens and components; start fresh rather than refactoring.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Heavy client pages</h3>
+      <p>The Scribblings of a Medic page is 415 KB because four images are embedded as base64 inside the HTML.</p>
+      <p class="fix">serve images as separate WebP files.</p></div>
+    <div class="item"><span class="chip c-good">Keep</span><h3>Lean delivery</h3>
+      <p>Compressed transfer is about 63 KB with a single extra request on load. System fonts, no frameworks, no third-party scripts. Images are WebP with width/height set, lazy loading and <code>srcset</code>. Page loaded in under 2 seconds on desktop.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>SEO, AEO and GEO</h2>
+  <div class="find">
+    <div class="item"><span class="chip c-crit">Critical</span><h3>No custom domain</h3>
+      <p>Every canonical URL points at <code>businessboosterlk.github.io</code>. Any authority the site builds belongs to a GitHub subdomain, and it reads as less established to clients. Moving later means redirects and lost ranking.</p>
+      <p class="fix">launch the new site on its own domain (e.g. businessbooster.lk) from day one.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>Portfolio sites are copies on the agency domain</h3>
+      <p>The homepage says "Every project links directly to the shipped website", but all six links point to folders on businessboosterlk.github.io, not the clients' own domains. Indexing is inconsistent: Clove Beach is <code>noindex</code>, Sastho is <code>noindex,nofollow</code> with a canonical to <code>/index.html</code>, Sapphire Trails has no canonical, and the other three are indexable. Indexable copies can compete with the clients' real sites in Google.</p>
+      <p class="fix">link to live client domains where they exist; mark hosted demos <code>noindex</code> consistently; build proper case-study pages on the agency site instead.</p></div>
+    <div class="item"><span class="chip c-warn">Important</span><h3>No analytics or conversion tracking</h3>
+      <p>No Google Analytics, Tag Manager or Meta Pixel on the homepage. The Ads page promises "tracking set up before the first rupee is spent", but the agency's own site can't report which page or CTA produces enquiries. The privacy page frames this as a choice ("almost nothing" is kept).</p>
+      <p class="fix">privacy-friendly analytics (e.g. GA4 with consent, or Plausible) plus WhatsApp-click events, and an updated privacy page.</p></div>
+    <div class="item"><span class="chip c-warn">Improve</span><h3>Schema can say more</h3>
+      <p>The JSON-LD <code>ProfessionalService</code> has name, phone, email and locality only. Missing: logo, image, <code>sameAs</code> social profiles, founders, opening hours, geo coordinates, services offered and reviews. Service pages could add <code>Service</code> and <code>FAQPage</code> schema to support the AEO pitch.</p></div>
+    <div class="item"><span class="chip c-good">Keep</span><h3>Strong groundwork</h3>
+      <ul class="plain">
+        <li>Unique title, meta description, canonical, Open Graph and JSON-LD on every agency page</li>
+        <li>One H1 per page; descriptions 134–159 characters</li>
+        <li><code>robots.txt</code>, XML sitemap and an <code>llms.txt</code> written for AI assistants</li>
+        <li>Local service pages written around Sri Lankan search terms (Colombo, Wadduwa, Nugegoda)</li>
+        <li>Old anchor links redirect to their new homes</li>
+      </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Redesign roadmap</h2>
+  <ol class="road">
+    <li><h3>Move to a custom domain</h3><p>Set up the domain first so the new site and all its content build authority in one place. Redirect github.io URLs.</p></li>
+    <li><h3>Gather proof before designing</h3><p>Collect 4–6 case studies with real numbers, client logos, 6+ named testimonials, team photos and the best reels/posts. The new homepage depends on this content.</p></li>
+    <li><h3>Rewrite the homepage around five screens</h3><p>Hero with clear offer and proof → results and logos → services by need → selected work and case studies → team and contact. Aim for 6–8 phone screens, not 26.</p></li>
+    <li><h3>Simplify the calls to action</h3><p>One primary WhatsApp CTA used everywhere, a "book a call" secondary, a short contact form. Keep per-page pre-filled WhatsApp text.</p></li>
+    <li><h3>Rebuild the front end cleanly</h3><p>A shared design-token stylesheet, visible-by-default content, 14px+ labels, AA contrast, 44px tap targets. Keep dark mode, reduced motion and the no-JS fallback.</p></li>
+    <li><h3>Turn the portfolio into case studies</h3><p>One page per client on the agency site; link out to the live client domain; noindex any hosted demos.</p></li>
+    <li><h3>Add measurement</h3><p>Analytics with consent, CTA click events per section, and a monthly look at which pages bring enquiries.</p></li>
+    <li><h3>Carry over the SEO work</h3><p>Keep URL paths for service pages, expand schema, add FAQ blocks, keep llms.txt current, and add images to service pages.</p></li>
+  </ol>
+  <p class="note">Method: downloaded and parsed all 29 pages, measured the homepage in Chrome at 1280px and in a 375×812 mobile viewport. Contrast figures are calculated from the site's CSS colour values. Load-time figures are from a single desktop visit and will vary by connection.</p>
+</section>
+</div>
