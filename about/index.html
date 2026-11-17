@@ -17,27 +17,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="../assets/css/style.css">
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(){var d=document.documentElement,t;d.classList.add('js');try{t=localStorage.getItem('bb-theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';d.setAttribute('data-theme',t);var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',t==='light'?'#ffffff':'#060606')})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" aria-label="Main">
-  <a class="brand" href="../" aria-label="Business Booster home"><span class="brand-mark">BB</span>Business Booster</a>
+  <a class="brand" href="../" aria-label="Business Booster home"><span class="logo" aria-hidden="true"></span></a>
   <nav class="nav-links" aria-label="Primary">
-    <a href="../services/">Services</a>
+    <a href="../content/">Content</a>
+    <a href="../marketing/">Marketing</a>
+    <a href="../technology/">Technology</a>
     <a href="../work/">Work</a>
-    <a href="../#systems">Systems</a>
     <a href="../about/" aria-current="page">About</a>
-    <a href="../contact/">Contact</a>
   </nav>
-  <a class="btn btn-primary" href="https://wa.me/94767412531?text=Hi%20Business%20Booster%2C%20I%27d%20like%20to%20talk%20about%20growing%20my%20business.">Talk to us</a>
+  <button class="theme-btn" type="button" aria-label="Switch to light theme"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button>
+  <a class="btn btn-primary" href="../contact/">Talk to us</a>
   <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
 </header>
 <div class="mobile-menu" id="mobile-menu">
   <a href="../">Home</a>
-  <a href="../services/">Services</a>
+  <a href="../content/">Content</a>
+  <a href="../marketing/">Marketing</a>
+  <a href="../technology/">Technology</a>
   <a href="../work/">Work</a>
-  <a href="../#systems">Systems</a>
   <a href="../about/">About</a>
   <a href="../contact/">Contact</a>
   <a class="btn btn-primary" href="https://wa.me/94767412531?text=Hi%20Business%20Booster%2C%20I%27d%20like%20to%20talk%20about%20growing%20my%20business.">Message us on WhatsApp</a>
@@ -104,7 +106,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="../"><span class="brand-mark">BB</span>Business Booster</a>
+        <a class="brand" href="../" aria-label="Business Booster home"><span class="logo" aria-hidden="true"></span></a>
         <p class="muted" style="margin-top:16px;max-width:34ch">A growth agency in Kalubowila, Colombo. Content, websites, search, ads and systems from one in-house team.</p>
         <div class="socials">
           <!-- Placeholder links: add the real profile URLs -->
@@ -114,11 +116,11 @@
           <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4v12H4zM6 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm4 6h4v1.7c.6-1 1.9-2 3.9-2 4.1 0 4.1 2.8 4.1 6.2V21h-4v-5.5c0-1.4 0-3.1-2-3.1s-2 1.5-2 3V21h-4V9Z"/></svg></a>
         </div>
       </div>
-      <div><h4>Services</h4><ul><li><a href="../services/#social">Social media</a></li><li><a href="../services/#websites">Websites</a></li><li><a href="../services/#search">SEO, AEO &amp; GEO</a></li><li><a href="../services/#ads">Paid ads</a></li><li><a href="../services/#systems">Systems</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="../work/">Work</a></li><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
+      <div><h4>What we do</h4><ul><li><a href="../content/">Content &amp; design</a></li><li><a href="../marketing/">Marketing &amp; search</a></li><li><a href="../technology/">Websites &amp; systems</a></li><li><a href="../work/">Our work</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li><li><a href="https://businessboosterlk.github.io/rank/">Rank yourself</a></li><li><a href="https://businessboosterlk.github.io/privacy/">Privacy</a></li></ul></div>
       <div><h4>Contact</h4><ul><li><a href="https://wa.me/94767412531">WhatsApp</a></li><li><a href="tel:+94767412531">+94 76 741 2531</a></li><li><a href="mailto:businessboosterlk@gmail.com">Email us</a></li></ul></div>
     </div>
-    <div class="wordmark" aria-hidden="true">Business Booster</div>
+    <div class="logo-big" aria-hidden="true"></div>
     <div class="footer-base"><span>© <span data-year>2026</span> Business Booster. Kalubowila, Colombo.</span><span>Built in-house.</span></div>
   </div>
 </footer>
